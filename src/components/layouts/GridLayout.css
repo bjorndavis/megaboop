@@ -1,0 +1,60 @@
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  height: calc(100vh - 120px);
+  padding: 16px;
+}
+
+.grid-character-selector {
+  grid-column: 1;
+  grid-row: 1;
+  overflow: auto;
+}
+
+.grid-preview {
+  grid-column: 2;
+  grid-row: 1;
+  overflow: auto;
+}
+
+.grid-weapon-selector {
+  grid-column: 1;
+  grid-row: 2;
+  overflow: auto;
+}
+
+.grid-tome-selector {
+  grid-column: 2;
+  grid-row: 2;
+  overflow: auto;
+}
+
+@media (max-width: 1024px) {
+  .grid-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    height: auto;
+  }
+
+  .grid-character-selector {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .grid-preview {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .grid-weapon-selector {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .grid-tome-selector {
+    grid-column: 1;
+    grid-row: 4;
+  }
+}

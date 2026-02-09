@@ -1,0 +1,85 @@
+.item-slot-container {
+  display: inline-block;
+  margin: 4px;
+}
+
+.item-slot {
+  width: 75px;
+  height: 75px;
+  border: 2px solid #444;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.item-slot.empty {
+  border-style: dashed;
+  border-color: #666;
+  background-color: #222;
+}
+
+.item-slot.filled {
+  border-style: solid;
+}
+
+.item-slot.locked {
+  border-color: #ffd700;
+}
+
+.item-slot-content {
+  text-align: center;
+  padding: 8px;
+  width: 100%;
+}
+
+.item-slot-name {
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+  word-wrap: break-word;
+  line-height: 1.2;
+}
+
+.slot-number {
+  font-size: 24px;
+  color: #666;
+  font-weight: bold;
+}
+
+.lock-icon {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 16px;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.8));
+}
+
+.remove-button {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  line-height: 1;
+  padding: 0;
+}
+
+.remove-button:hover {
+  background-color: rgba(255, 0, 0, 1);
+  transform: scale(1.1);
+}

@@ -1,0 +1,21 @@
+.slots-container {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.slots-title {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #fff;
+  border-bottom: 2px solid #333;
+  padding-bottom: 6px;
+}
+
+.slots-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
