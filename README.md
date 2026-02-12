@@ -1,6 +1,7 @@
 # Mega Bonk Build Preview
 
 A fun experiment with claude + my kiddo!
+
 An interactive web tool for previewing and experimenting with character builds in the video game "Mega Bonk".
 
 ## Features
