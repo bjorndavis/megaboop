@@ -10,9 +10,12 @@ An interactive web tool for previewing and experimenting with character builds i
 - **29 Weapons** - Including 7 starter weapons and 22 unlockables
 - **23 Tomes** - Including 13 default tomes and 10 unlockables
 - **Build Constraints** - Max 4 weapons (including starting weapon), max 4 tomes
-- **Two Layout Options** - Grid layout and side-by-side layout
+- **Build Names & Descriptions** - Name your build and describe your strategy, shareable via URL
+- **Synergy Highlights** - Weapons and tomes that work well together glow amber; intensity scales with the number of matching tomes (1–4)
+- **Stat Filter Bar** - Filter weapons by tome synergy to quickly find what you need
+- **Item Detail View** - Added weapons and tomes show their full descriptions, effects, and stat chips in the build preview
 - **Real-time Validation** - Prevents invalid builds and duplicate items
-- **Placeholder System** - Consistent colored placeholders for each item
+- **Shareable Builds** - Copy a URL that encodes your full build including name and description
 
 ## Quick Start
 
@@ -48,13 +51,17 @@ npm run preview
 
 1. **Select a Character** - Click on a character card to select them. This will automatically add their starting weapon to the build.
 
-2. **Add Weapons** - Click on weapon cards to add them to your build (up to 4 total, including the starting weapon). The starting weapon cannot be removed.
+2. **Add Weapons** - Click on weapon cards to add them to your build (up to 4 total, including the starting weapon). Use the stat filter buttons above the grid to filter by tome synergy.
 
-3. **Add Tomes** - Click on tome cards to add them to your build (up to 4 total).
+3. **Add Tomes** - Click on tome cards to add them to your build (up to 4 total). Tomes that synergise with your current weapons glow amber.
 
-4. **Remove Items** - Click the × button on filled slots to remove weapons or tomes. The starting weapon (first slot) cannot be removed.
+4. **See Synergies** - As you add items, the build preview shows amber glows on weapons that benefit from your tomes. Green stat chips indicate which tomes are actively boosting each weapon.
 
-5. **Switch Layouts** - Use the layout toggle buttons at the top to switch between Grid and Side-by-Side layouts.
+5. **Name Your Build** - Enter a name and optional description in the preview panel.
+
+6. **Share** - Click "Share Build" to copy a shareable URL with your full build encoded.
+
+7. **Remove Items** - Click the × button on any item row to remove it. The starting weapon cannot be removed.
 
 ## Project Structure
 
@@ -70,21 +77,22 @@ src/
 │   └── useBuildState.ts       # Build state management
 ├── utils/
 │   ├── validation.ts          # Build validation logic
+│   ├── urlSharing.ts          # URL encode/decode for build sharing
 │   └── placeholder.ts         # Placeholder color generation
 ├── context/
 │   └── BuildContext.tsx       # React context provider
 ├── components/
 │   ├── shared/
-│   │   ├── ItemCard.tsx       # Reusable item card
+│   │   ├── ItemCard.tsx       # Reusable item card (with synergy glow)
 │   │   └── ItemSlot.tsx       # Build slot display
 │   ├── selectors/
 │   │   ├── CharacterSelector.tsx
-│   │   ├── WeaponSelector.tsx
+│   │   ├── WeaponSelector.tsx  # Includes stat filter bar
 │   │   └── TomeSelector.tsx
 │   ├── preview/
 │   │   ├── CharacterDisplay.tsx
-│   │   ├── WeaponSlots.tsx
-│   │   └── TomeSlots.tsx
+│   │   ├── WeaponSlots.tsx    # Detail list with synergy glow + stat chips
+│   │   └── TomeSlots.tsx      # Detail list with effect descriptions
 │   └── layouts/
 │       ├── GridLayout.tsx
 │       ├── SideBySideLayout.tsx
@@ -94,8 +102,6 @@ src/
 ```
 
 ## Game Data
-
-The application includes complete data for:
 
 ### Characters (21 total)
 Fox, Sir Oofie, Calcium, Megachad, Ogre, CL4NK, Athena, Robinette, Monke, Tony McZoom, Bush, Birdo, Noelle, Amog, Spaceman, Bandit, Ninja, Vlad, Sir Chadwell, Dicehead, Roberto
@@ -107,31 +113,6 @@ Fox, Sir Oofie, Calcium, Megachad, Ogre, CL4NK, Athena, Robinette, Monke, Tony M
 ### Tomes (23 total)
 - **Default Tomes (13):** Agility, Cooldown, Damage, Evasion, Golden, Health, Knockback, Precision, Projectile Speed, Regen, Shield, Silver, Size
 - **Unlockable Tomes (10):** Armor, Attraction, Bloody, Chaos, Cursed, Duration, Luck, Quantity, Thorns, XP
-
-## Adding Real Images
-
-Currently, the app uses colored placeholder boxes. To add real game images:
-
-1. Place image files in `public/images/` directory:
-   - `public/images/characters/` - Character images
-   - `public/images/weapons/` - Weapon images
-   - `public/images/tomes/` - Tome images
-
-2. Update the data files to reference the images:
-
-```typescript
-// Example in src/data/characters.ts
-{
-  id: 'fox',
-  name: 'Fox',
-  // Change from: imageUrl: generatePlaceholder('fox', 'character'),
-  // To:
-  imageUrl: '/images/characters/fox.png',
-  // ...
-}
-```
-
-3. Follow the same pattern for weapons and tomes.
 
 ## Build Rules
 
@@ -146,7 +127,7 @@ Currently, the app uses colored placeholder boxes. To add real game images:
 - **React 18** - UI framework
 - **TypeScript** - Type safety
 - **Vite** - Build tool and dev server
-- **CSS Modules** - Component styling
+- **CSS** - Component styling
 
 ## Browser Support
 
