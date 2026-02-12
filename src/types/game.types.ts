@@ -8,6 +8,7 @@ export interface GameItem {
 export interface Weapon extends GameItem {
   type: 'weapon';
   unlockCondition?: string;
+  beneficialStats?: string[]; // tome IDs that benefit this weapon
 }
 
 export interface Tome extends GameItem {
@@ -28,4 +29,5 @@ export interface Build {
   weapons: Weapon[];
   tomes: Tome[];
   name?: string;
+  description?: string;
 }

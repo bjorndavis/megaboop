@@ -6,57 +6,64 @@ export const weapons: Weapon[] = [
     id: 'sword',
     name: 'Sword',
     type: 'weapon',
-    description: 'A basic melee weapon that swings in an arc',
+    description: 'Slashes through multiple enemies in a wide sweeping melee arc',
     imageUrl: '/images/weapons/sword.png',
-    unlockCondition: 'Available from start'
+    unlockCondition: 'Starter weapon',
+    beneficialStats: ['damage', 'quantity', 'knockback', 'size']
   },
   {
     id: 'flamewalker',
     name: 'Flamewalker',
     type: 'weapon',
-    description: 'Creates a trail of fire behind you',
+    description: 'Generates a persistent fire trail as you move, continuously damaging enemies who walk through it',
     imageUrl: '/images/weapons/flamewalker.png',
-    unlockCondition: 'Available from start'
+    unlockCondition: 'Starter weapon',
+    beneficialStats: ['damage', 'quantity', 'duration', 'size']
   },
   {
     id: 'lightning-staff',
     name: 'Lightning Staff',
     type: 'weapon',
-    description: 'Shoots lightning bolts at enemies',
+    description: 'Summons lightning to smite nearby enemies with instant area-of-effect damage',
     imageUrl: '/images/weapons/lightning-staff.png',
-    unlockCondition: 'Available from start'
+    unlockCondition: 'Starter weapon',
+    beneficialStats: ['damage', 'quantity', 'size']
   },
   {
     id: 'firestaff',
     name: 'Firestaff',
     type: 'weapon',
-    description: 'Launches fireballs in multiple directions',
+    description: 'Launches fireballs that explode on contact, dealing damage to the initial target and nearby enemies',
     imageUrl: '/images/weapons/firestaff.png',
-    unlockCondition: 'Available from start'
+    unlockCondition: 'Starter weapon',
+    beneficialStats: ['damage', 'quantity', 'projectile-speed', 'size']
   },
   {
     id: 'chunkers',
     name: 'Chunkers',
     type: 'weapon',
-    description: 'Throws large chunks at enemies',
+    description: 'Summons orbiting rocky projectiles that damage and knock back enemies on contact',
     imageUrl: '/images/weapons/chunkers.png',
-    unlockCondition: 'Available from start'
+    unlockCondition: 'Starter weapon',
+    beneficialStats: ['damage', 'quantity', 'projectile-speed', 'knockback', 'size']
   },
   {
     id: 'bone',
     name: 'Bone',
     type: 'weapon',
-    description: 'Throws bones that bounce between enemies',
+    description: 'Fires projectiles that ricochet off enemies, allowing a single shot to hit multiple targets',
     imageUrl: '/images/weapons/bone.png',
-    unlockCondition: 'Available from start'
+    unlockCondition: 'Starter weapon',
+    beneficialStats: ['damage', 'quantity', 'projectile-speed', 'precision']
   },
   {
     id: 'bow',
     name: 'Bow',
     type: 'weapon',
-    description: 'Shoots arrows at enemies',
+    description: 'Fires piercing arrows that can strike multiple enemies simultaneously',
     imageUrl: '/images/weapons/bow.png',
-    unlockCondition: 'Available from start'
+    unlockCondition: 'Starter weapon',
+    beneficialStats: ['damage', 'precision', 'quantity', 'projectile-speed', 'size']
   },
 
   // Unlockable Weapons (22)
@@ -64,185 +71,208 @@ export const weapons: Weapon[] = [
     id: 'revolver',
     name: 'Revolver',
     type: 'weapon',
-    description: 'Rapid-fire gun that shoots bullets',
+    description: 'Fires multiple projectiles that bounce off enemies and obstacles, chaining across large groups for crowd control',
     imageUrl: '/images/weapons/revolver.png',
-    unlockCondition: 'Unlock CL4NK'
+    unlockCondition: 'Kill 7,500 enemies, then purchase for 1 Silver',
+    beneficialStats: ['damage', 'precision', 'quantity', 'projectile-speed']
   },
   {
     id: 'aegis',
     name: 'Aegis',
     type: 'weapon',
-    description: 'A shield that protects and reflects projectiles',
+    description: 'Creates a protective barrier that blocks enemy attacks while releasing shockwaves for crowd control',
     imageUrl: '/images/weapons/aegis.png',
-    unlockCondition: 'Unlock Athena'
+    unlockCondition: 'Block a total of 500 damage using Armor while playing as Sir Oofie',
+    beneficialStats: ['damage', 'quantity', 'knockback', 'size']
   },
   {
     id: 'bananarang',
     name: 'Bananarang',
     type: 'weapon',
-    description: 'Throws boomerang bananas',
+    description: 'Launches bananas that arc outward and return to the player, dealing damage on both the outgoing and return paths',
     imageUrl: '/images/weapons/bananarang.png',
-    unlockCondition: 'Unlock Monke'
+    unlockCondition: 'Find the hidden banana in the Forest map, then purchase for 1 Silver',
+    beneficialStats: ['damage', 'quantity', 'projectile-speed', 'size']
   },
   {
     id: 'aura',
     name: 'Aura',
     type: 'weapon',
-    description: 'Creates a damaging aura around you',
+    description: 'Continuously damages all enemies within a close-range radius around the player',
     imageUrl: '/images/weapons/aura.png',
-    unlockCondition: 'Unlock Megachad'
+    unlockCondition: 'Survive for 2 consecutive minutes without taking any damage in a single run, then purchase for 1 Silver',
+    beneficialStats: ['damage', 'size']
   },
   {
     id: 'axe',
     name: 'Axe',
     type: 'weapon',
-    description: 'Powerful melee weapon with wide swings',
+    description: 'Throws spinning projectiles that linger on the field, creating zones of continuous damage',
     imageUrl: '/images/weapons/axe.png',
-    unlockCondition: 'Unlock Ogre'
+    unlockCondition: 'Kill 2,000 enemies using the Sword, then purchase for 1 Silver',
+    beneficialStats: ['damage', 'quantity', 'duration', 'size']
   },
   {
     id: 'space-noodle',
     name: 'Space Noodle',
     type: 'weapon',
-    description: 'Whips enemies with noodle physics',
+    description: 'Attaches a green beam to an enemy, damaging any foes that make contact with the link between the player and the target',
     imageUrl: '/images/weapons/space-noodle.png',
-    unlockCondition: 'Beat wave 15'
+    unlockCondition: 'Complete Desert Tier 2 as Tony McZoom',
+    beneficialStats: ['damage', 'duration', 'size']
   },
   {
     id: 'sniper-rifle',
     name: 'Sniper Rifle',
     type: 'weapon',
-    description: 'Long-range precision weapon',
+    description: 'Fires a high-powered, manually-aimed bullet that pierces through multiple enemies in a straight line',
     imageUrl: '/images/weapons/sniper-rifle.png',
-    unlockCondition: 'Unlock Bush'
+    unlockCondition: 'Upgrade the Precision Tome to Level 10, then purchase for 2 Silver',
+    beneficialStats: ['damage', 'quantity', 'size']
   },
   {
     id: 'slutty-rocket',
     name: 'Slutty Rocket',
     type: 'weapon',
-    description: 'Fires homing rockets',
+    description: 'Launches homing missiles that automatically seek out and deal with threats while the player focuses on dodging',
     imageUrl: '/images/weapons/slutty-rocket.png',
-    unlockCondition: 'Beat wave 20'
+    unlockCondition: 'Unlock CL4NK by defeating the Forest Tier 1 final boss, then accumulate 15,000 enemy kills as CL4NK, then purchase for 2 Silver',
+    beneficialStats: ['damage', 'precision', 'quantity', 'projectile-speed']
   },
   {
     id: 'shotgun',
     name: 'Shotgun',
     type: 'weapon',
-    description: 'Close-range spread weapon',
+    description: 'Fires a spread of bullets in a 2-round burst cycle, with damage that decreases based on distance to the target',
     imageUrl: '/images/weapons/shotgun.png',
-    unlockCondition: 'Beat wave 10'
+    unlockCondition: '5% drop chance from breaking a Tumbleweed on Desert Stage 2',
+    beneficialStats: ['damage', 'precision', 'quantity', 'size']
   },
   {
     id: 'mines',
     name: 'Mines',
     type: 'weapon',
-    description: 'Places explosive mines',
+    description: 'Deploys proximity-triggered explosive mines that detonate when enemies approach, dealing area-of-effect damage with knockback',
     imageUrl: '/images/weapons/mines.png',
-    unlockCondition: 'Beat wave 12'
+    unlockCondition: 'Kill 7,500 enemies with the Slutty Rocket',
+    beneficialStats: ['damage', 'quantity', 'duration', 'size']
   },
   {
     id: 'wireless-dagger',
     name: 'Wireless Dagger',
     type: 'weapon',
-    description: 'Throws daggers that orbit around you',
+    description: 'Automatically throws homing daggers that seek out nearby enemies, requiring no manual aiming',
     imageUrl: '/images/weapons/wireless-dagger.png',
-    unlockCondition: 'Unlock Tony McZoom'
+    unlockCondition: 'Upgrade the Lightning Staff to Level 15, then purchase for 2 Silver',
+    beneficialStats: ['damage', 'quantity', 'projectile-speed']
   },
   {
     id: 'frostwalker',
     name: 'Frostwalker',
     type: 'weapon',
-    description: 'Creates a trail of ice that slows enemies',
+    description: 'Creates ice pulses around the player to freeze and damage nearby enemies, making them vulnerable to follow-up attacks',
     imageUrl: '/images/weapons/frostwalker.png',
-    unlockCondition: 'Unlock Noelle'
+    unlockCondition: 'Freeze 1,000 enemies using the Ice Cube item, then purchase for 2 Silver',
+    beneficialStats: ['damage', 'duration', 'size']
   },
   {
     id: 'tornado',
     name: 'Tornado',
     type: 'weapon',
-    description: 'Summons tornados that move around',
+    description: 'Launches projectiles that push enemies away, functioning primarily as a defensive crowd-control tool',
     imageUrl: '/images/weapons/tornado.png',
-    unlockCondition: 'Unlock Birdo'
+    unlockCondition: 'Charge 5 Charge Shrines during a Sandstorm event on any Desert stage',
+    beneficialStats: ['damage', 'quantity', 'projectile-speed', 'knockback', 'size']
   },
   {
     id: 'dexecutioner',
     name: 'Dexecutioner',
     type: 'weapon',
-    description: 'Dual-wielding axes',
+    description: 'Shoots a piercing blade that hits multiple enemies and has a 2% chance to instantly execute any non-boss enemy on impact',
     imageUrl: '/images/weapons/dexecutioner.png',
-    unlockCondition: 'Unlock Bandit'
+    unlockCondition: 'Kill 12,500 enemies using the Sword',
+    beneficialStats: ['damage', 'precision', 'quantity', 'size']
   },
   {
     id: 'blood-magic',
     name: 'Blood Magic',
     type: 'weapon',
-    description: 'Uses health to deal massive damage',
+    description: 'Grants a 5% chance to permanently increase maximum HP by 1 when killing enemies, enabling extremely tanky builds',
     imageUrl: '/images/weapons/blood-magic.png',
-    unlockCondition: 'Unlock Vlad'
+    unlockCondition: 'Get the Bloody Tome to Level 12, then purchase for 2 Silver',
+    beneficialStats: ['damage', 'quantity', 'size']
   },
   {
     id: 'black-hole',
     name: 'Black Hole',
     type: 'weapon',
-    description: 'Creates black holes that pull enemies in',
+    description: 'Fires a projectile that pulls nearby enemies toward its impact point, clustering them together for crowd control',
     imageUrl: '/images/weapons/black-hole.png',
-    unlockCondition: 'Unlock Spaceman'
+    unlockCondition: 'Upgrade the Knockback Tome to Level 10, then purchase for 2 Silver',
+    beneficialStats: ['damage', 'quantity', 'duration', 'size']
   },
   {
     id: 'poison-flask',
     name: 'Poison Flask',
     type: 'weapon',
-    description: 'Throws flasks that create poison clouds',
+    description: 'Throws toxic bottles that deal area damage and inflict a stackable poison status effect on enemies',
     imageUrl: '/images/weapons/poison-flask.png',
-    unlockCondition: 'Unlock Amog'
+    unlockCondition: 'Kill the Scorpionussy Miniboss in the Desert 3 times',
+    beneficialStats: ['damage', 'quantity', 'projectile-speed', 'duration', 'size']
   },
   {
     id: 'katana',
     name: 'Katana',
     type: 'weapon',
-    description: 'Fast slashing melee weapon',
+    description: 'Automatically targets and strikes the nearest enemy, excelling at delivering concentrated single-target damage',
     imageUrl: '/images/weapons/katana.png',
-    unlockCondition: 'Unlock Ninja'
+    unlockCondition: '5% chance to be found after breaking a Tumbleweed on any Desert Stage 1 map, then purchase for 2 Silver',
+    beneficialStats: ['damage', 'precision', 'quantity', 'size']
   },
   {
     id: 'dragons-breath',
     name: "Dragon's Breath",
     type: 'weapon',
-    description: 'Breathes fire in a cone',
+    description: 'Exhales a cone of fire in the player\'s movement direction, dealing damage to multiple enemies simultaneously',
     imageUrl: '/images/weapons/dragons-breath.png',
-    unlockCondition: 'Beat wave 25'
+    unlockCondition: 'Kill 1,000 Wisp as Fox on Desert',
+    beneficialStats: ['damage', 'duration', 'size']
   },
   {
     id: 'dice',
     name: 'Dice',
     type: 'weapon',
-    description: 'Random effects with each roll',
+    description: 'Fires a projectile that randomly deals 1-6 damage per hit, with each roll of 6 permanently increasing the weapon\'s critical hit chance by 0.5% for the run',
     imageUrl: '/images/weapons/dice.png',
-    unlockCondition: 'Unlock Dicehead'
+    unlockCondition: 'Get the Luck Tome to Level 12, then purchase for 4 Silver',
+    beneficialStats: ['damage', 'precision', 'quantity', 'projectile-speed', 'size']
   },
   {
     id: 'hero-sword',
     name: 'Hero Sword',
     type: 'weapon',
-    description: 'Legendary sword with special abilities',
+    description: 'Combines melee and ranged combat by firing slashing projectiles whenever the player performs a close-range slash attack',
     imageUrl: '/images/weapons/hero-sword.png',
-    unlockCondition: 'Beat game on Hard'
+    unlockCondition: 'Defeat a Stage Boss without picking up any ground items, powerups, or using shrines',
+    beneficialStats: ['damage', 'quantity', 'projectile-speed', 'size']
   },
   {
     id: 'corrupted-sword',
     name: 'Corrupted Sword',
     type: 'weapon',
-    description: 'Dark sword with corrupting power',
+    description: 'Delivers slashes in both directions with damage that scales inversely with health, reaching triple damage at 1 HP',
     imageUrl: '/images/weapons/corrupted-sword.png',
-    unlockCondition: 'Unlock Sir Chadwell'
+    unlockCondition: 'Upgrade the Cursed Tome to Level 20 within 10 minutes of starting a run (requires first unlocking the Cursed Tome by defeating a stage boss in under 5 minutes)',
+    beneficialStats: ['damage', 'quantity', 'projectile-speed', 'size']
   },
   {
     id: 'scythe',
     name: 'Scythe',
     type: 'weapon',
-    description: 'Wide-sweeping melee weapon',
-    imageUrl: '#000000',
-    unlockCondition: 'Unlock Roberto'
+    description: 'Wide sweeping arc attacks that hit multiple enemies with excellent crowd control and solid base damage',
+    imageUrl: '/images/weapons/scythe.png',
+    unlockCondition: 'Collect 4 Crypt Keys in the Graveyard map, then defeat Big Bob in the Crypt while positioned near lanterns',
+    beneficialStats: ['damage', 'cooldown', 'precision', 'size']
   }
 ];
 

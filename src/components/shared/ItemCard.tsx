@@ -7,14 +7,16 @@ interface ItemCardProps {
   isSelected?: boolean;
   isDisabled?: boolean;
   size?: 'small' | 'large';
+  synergyCount?: number;
 }
 
-export function ItemCard({ item, onClick, isSelected, isDisabled, size = 'small' }: ItemCardProps) {
+export function ItemCard({ item, onClick, isSelected, isDisabled, size = 'small', synergyCount }: ItemCardProps) {
   const isPlaceholder = item.imageUrl.startsWith('#');
 
   return (
     <div
       className={`item-card ${size} ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`}
+      data-synergy={!isSelected && synergyCount ? synergyCount : undefined}
       onClick={isDisabled ? undefined : onClick}
       title={item.description}
       style={{

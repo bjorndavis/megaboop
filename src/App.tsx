@@ -8,7 +8,7 @@ import { tomes } from './data/tomes';
 import './App.css';
 
 function AppContent() {
-  const { build, error, clearError, resetBuild, selectCharacter, addWeapon, addTome, setBuildName } = useBuild();
+  const { build, error, clearError, resetBuild, selectCharacter, addWeapon, addTome, setBuildName, setBuildDescription } = useBuild();
   const [showCopied, setShowCopied] = useState(false);
 
   // Load build from URL on mount
@@ -40,6 +40,11 @@ function AppContent() {
             addTome(tome);
           }
         });
+
+        // Set description
+        if (urlBuild.description) {
+          setBuildDescription(urlBuild.description);
+        }
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -26,7 +26,6 @@
 }
 
 .item-slot.locked {
-  border-color: #ffd700;
 }
 
 .item-slot-content {
@@ -82,4 +81,36 @@
 .remove-button:hover {
   background-color: rgba(255, 0, 0, 1);
   transform: scale(1.1);
+}
+
+.weapon-slot-wrapper { display: inline-block; }
+
+.weapon-slot-wrapper[data-synergy] .item-slot.filled {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, border-width 0.3s ease;
+}
+
+/* 1 matching tome — dim amber tint */
+.weapon-slot-wrapper[data-synergy="1"] .item-slot.filled {
+  border-color: #a06010;
+  box-shadow: 0 0 8px rgba(240,160,32,0.55);
+}
+
+/* 2 matching tomes — clear amber glow */
+.weapon-slot-wrapper[data-synergy="2"] .item-slot.filled {
+  border-color: #d08018;
+  box-shadow: 0 0 12px rgba(240,160,32,0.75), 0 0 24px rgba(240,160,32,0.4);
+}
+
+/* 3 matching tomes — strong bright glow */
+.weapon-slot-wrapper[data-synergy="3"] .item-slot.filled {
+  border-color: #f0a020;
+  border-width: 3px;
+  box-shadow: 0 0 16px rgba(240,160,32,0.9), 0 0 32px rgba(240,160,32,0.6), 0 0 48px rgba(240,160,32,0.3);
+}
+
+/* 4 matching tomes — max intensity, thick bright border + wide halo */
+.weapon-slot-wrapper[data-synergy="4"] .item-slot.filled {
+  border-color: #ffc040;
+  border-width: 3px;
+  box-shadow: 0 0 18px rgba(255,192,64,1), 0 0 36px rgba(240,160,32,0.8), 0 0 60px rgba(240,160,32,0.45), 0 0 80px rgba(240,160,32,0.2);
 }

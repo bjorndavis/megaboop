@@ -26,6 +26,11 @@ export function encodeBuildToUrl(build: Build): string {
     params.set('t', build.tomes.map(t => t.id).join(','));
   }
 
+  // Add description
+  if (build.description && build.description.trim()) {
+    params.set('d', build.description.trim());
+  }
+
   return params.toString();
 }
 
@@ -44,6 +49,7 @@ export interface BuildFromUrl {
   weaponIds: string[];
   tomeIds: string[];
   name?: string;
+  description?: string;
 }
 
 export function decodeBuildFromUrl(): BuildFromUrl | null {
@@ -61,12 +67,14 @@ export function decodeBuildFromUrl(): BuildFromUrl | null {
   const tomeIds = tomesParam ? tomesParam.split(',') : [];
 
   const name = params.get('n') || undefined;
+  const description = params.get('d') || undefined;
 
   return {
     characterId,
     weaponIds,
     tomeIds,
-    name
+    name,
+    description
   };
 }
 

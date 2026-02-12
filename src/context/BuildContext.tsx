@@ -12,6 +12,7 @@ interface BuildContextType {
   removeTome: (index: number) => void;
   resetBuild: () => void;
   setBuildName: (name: string) => void;
+  setBuildDescription: (description: string) => void;
   clearError: () => void;
 }
 

@@ -123,6 +123,13 @@ export function useBuildState() {
     }));
   }, []);
 
+  const setBuildDescription = useCallback((description: string) => {
+    setBuild(currentBuild => ({
+      ...currentBuild,
+      description
+    }));
+  }, []);
+
   const clearError = useCallback(() => {
     setError(null);
   }, []);
@@ -137,6 +144,7 @@ export function useBuildState() {
     removeTome,
     resetBuild,
     setBuildName,
+    setBuildDescription,
     clearError
   };
 }

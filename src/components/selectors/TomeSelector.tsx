@@ -21,6 +21,7 @@ export function TomeSelector() {
         {sortedTomes.map(tome => {
           const isSelected = selectedTomeIds.includes(tome.id);
           const isDisabled = !build.character || isSelected || isMaxReached;
+          const synergyCount = build.weapons.filter(w => w.beneficialStats?.includes(tome.id)).length;
 
           return (
             <ItemCard
@@ -29,6 +30,7 @@ export function TomeSelector() {
               onClick={() => addTome(tome)}
               isSelected={isSelected}
               isDisabled={isDisabled}
+              synergyCount={synergyCount}
             />
           );
         })}

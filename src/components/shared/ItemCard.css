@@ -54,3 +54,29 @@
 .item-card.small .item-card-name {
   font-size: 10px;
 }
+
+.item-card[data-synergy] {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.item-card[data-synergy="1"] {
+  border-color: #a06010;
+  box-shadow: 0 0 6px rgba(240,160,32,0.5);
+}
+
+.item-card[data-synergy="2"] {
+  border-color: #d08018;
+  box-shadow: 0 0 10px rgba(240,160,32,0.7), 0 0 18px rgba(240,160,32,0.35);
+}
+
+.item-card[data-synergy="3"] {
+  border-color: #f0a020;
+  border-width: 3px;
+  box-shadow: 0 0 12px rgba(240,160,32,0.85), 0 0 24px rgba(240,160,32,0.55), 0 0 36px rgba(240,160,32,0.25);
+}
+
+.item-card[data-synergy="4"] {
+  border-color: #ffc040;
+  border-width: 3px;
+  box-shadow: 0 0 14px rgba(255,192,64,1), 0 0 28px rgba(240,160,32,0.75), 0 0 48px rgba(240,160,32,0.4);
+}

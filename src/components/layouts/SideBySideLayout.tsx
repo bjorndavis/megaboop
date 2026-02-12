@@ -8,7 +8,7 @@ import { useBuild } from '../../context/BuildContext';
 import './SideBySideLayout.css';
 
 export function SideBySideLayout() {
-  const { build, setBuildName } = useBuild();
+  const { build, setBuildName, setBuildDescription } = useBuild();
 
   return (
     <div className="side-by-side-layout">
@@ -28,24 +28,19 @@ export function SideBySideLayout() {
               onChange={(e) => setBuildName(e.target.value)}
               maxLength={50}
             />
+            <textarea
+              className="build-description-input"
+              placeholder="Describe your build strategy..."
+              value={build.description || ''}
+              onChange={(e) => setBuildDescription(e.target.value)}
+              maxLength={500}
+              rows={3}
+            />
           </div>
         )}
         <CharacterDisplay />
         <WeaponSlots />
         <TomeSlots />
-        {build.character && (
-          <div className="build-summary">
-            <h3>Build Summary</h3>
-            <div className="summary-item">
-              <span className="summary-label">Weapons:</span>
-              <span className="summary-value">{build.weapons.length}/4</span>
-            </div>
-            <div className="summary-item">
-              <span className="summary-label">Tomes:</span>
-              <span className="summary-value">{build.tomes.length}/4</span>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
