@@ -7,13 +7,18 @@ import { WeaponSlots } from '../preview/WeaponSlots';
 import { TomeSlots } from '../preview/TomeSlots';
 import { useBuild } from '../../context/BuildContext';
 import { MAX_WEAPONS, MAX_TOMES } from '../../utils/validation';
+import { decodeBuildFromUrl } from '../../utils/urlSharing';
 import './SideBySideLayout.css';
 
 type Tab = 'characters' | 'loadout' | 'preview';
 
 export function SideBySideLayout() {
   const { build, setBuildName, setBuildDescription } = useBuild();
-  const [activeTab, setActiveTab] = useState<Tab>('characters');
+  const [activeTab, setActiveTab] = useState<Tab>(() => {
+    const hasUrlBuild = decodeBuildFromUrl() !== null;
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    return hasUrlBuild && isMobile ? 'preview' : 'characters';
+  });
   const [descOpen, setDescOpen] = useState(false);
 
   useEffect(() => {
