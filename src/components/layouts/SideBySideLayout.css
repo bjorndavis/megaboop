@@ -85,6 +85,21 @@
   min-width: 0;
 }
 
+/* Preview tab panel (mobile only) */
+.preview-tab-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Hide Preview tab button on desktop */
+.mobile-only-tab {
+  display: none;
+}
+
 /* ── Build name + description ────────────────────────────────────── */
 
 .build-name-container {
@@ -179,6 +194,16 @@
     height: auto;
   }
 
+  /* Show Preview tab button on mobile */
+  .mobile-only-tab {
+    display: block;
+  }
+
+  /* Hide the desktop right column — preview lives in the tab instead */
+  .desktop-preview {
+    display: none;
+  }
+
   /* Tab content scrolls on mobile; not constrained to shared fixed height */
   .selector-tab-content {
     flex: none;
@@ -201,12 +226,14 @@
     overflow-y: visible;
   }
 
+  /* Preview tab panel fills the scroll area */
+  .preview-tab-panel {
+    overflow-y: auto;
+    max-height: 82vh;
+  }
+
   .selector-tab {
     font-size: 11px;
     padding: 6px 4px;
-  }
-
-  .side-preview {
-    overflow-y: visible;
   }
 }

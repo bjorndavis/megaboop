@@ -9,19 +9,17 @@ import { useBuild } from '../../context/BuildContext';
 import { MAX_WEAPONS, MAX_TOMES } from '../../utils/validation';
 import './SideBySideLayout.css';
 
-type Tab = 'characters' | 'loadout';
+type Tab = 'characters' | 'loadout' | 'preview';
 
 export function SideBySideLayout() {
   const { build, setBuildName, setBuildDescription } = useBuild();
   const [activeTab, setActiveTab] = useState<Tab>('characters');
   const [descOpen, setDescOpen] = useState(false);
 
-  // Open description if build already has one (e.g. loaded from URL)
   useEffect(() => {
     if (build.description) setDescOpen(true);
   }, [build.description]);
 
-  // Auto-advance to Loadout tab when a character is selected
   useEffect(() => {
     if (build.character && activeTab === 'characters') {
       setActiveTab('loadout');
@@ -29,10 +27,55 @@ export function SideBySideLayout() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [build.character?.id]);
 
-  const tabs: { id: Tab; label: string }[] = [
+  const tabs: { id: Tab; label: string; mobileOnly?: boolean }[] = [
     { id: 'characters', label: build.character ? `✓ ${build.character.name}` : 'Characters' },
     { id: 'loadout', label: `Weapons (${build.weapons.length}/${MAX_WEAPONS}) · Tomes (${build.tomes.length}/${MAX_TOMES})` },
+    { id: 'preview', label: 'Preview', mobileOnly: true },
   ];
+
+  // Shared preview content — rendered in the tab on mobile, in side-preview on desktop
+  const previewContent = (
+    <>
+      {build.character && (
+        <div className="build-name-container">
+          <input
+            type="text"
+            className="build-name-input"
+            placeholder="Name your build..."
+            value={build.name || ''}
+            onChange={(e) => setBuildName(e.target.value)}
+            maxLength={50}
+          />
+          {descOpen ? (
+            <div className="build-desc-wrap">
+              <textarea
+                className="build-description-input"
+                placeholder="Describe your build strategy..."
+                value={build.description || ''}
+                onChange={(e) => setBuildDescription(e.target.value)}
+                maxLength={500}
+                rows={2}
+                autoFocus
+              />
+              <button
+                className="build-desc-toggle"
+                onClick={() => { setBuildDescription(''); setDescOpen(false); }}
+              >
+                Remove description
+              </button>
+            </div>
+          ) : (
+            <button className="build-desc-toggle" onClick={() => setDescOpen(true)}>
+              + Add description
+            </button>
+          )}
+        </div>
+      )}
+      <CharacterDisplay />
+      <WeaponSlots />
+      <TomeSlots />
+    </>
+  );
 
   return (
     <div className="side-by-side-layout">
@@ -41,7 +84,7 @@ export function SideBySideLayout() {
           {tabs.map(tab => (
             <button
               key={tab.id}
-              className={`selector-tab${activeTab === tab.id ? ' active' : ''}`}
+              className={`selector-tab${activeTab === tab.id ? ' active' : ''}${tab.mobileOnly ? ' mobile-only-tab' : ''}`}
               onClick={() => setActiveTab(tab.id)}
             >
               {tab.label}
@@ -56,51 +99,17 @@ export function SideBySideLayout() {
               <TomeSelector />
             </>
           )}
+          {activeTab === 'preview' && (
+            <div className="preview-tab-panel">
+              {previewContent}
+            </div>
+          )}
         </div>
       </div>
 
-      <div className="side-preview">
-        {build.character && (
-          <div className="build-name-container">
-            <input
-              type="text"
-              className="build-name-input"
-              placeholder="Name your build..."
-              value={build.name || ''}
-              onChange={(e) => setBuildName(e.target.value)}
-              maxLength={50}
-            />
-            {descOpen ? (
-              <div className="build-desc-wrap">
-                <textarea
-                  className="build-description-input"
-                  placeholder="Describe your build strategy..."
-                  value={build.description || ''}
-                  onChange={(e) => setBuildDescription(e.target.value)}
-                  maxLength={500}
-                  rows={2}
-                  autoFocus
-                />
-                <button
-                  className="build-desc-toggle"
-                  onClick={() => { setBuildDescription(''); setDescOpen(false); }}
-                >
-                  Remove description
-                </button>
-              </div>
-            ) : (
-              <button
-                className="build-desc-toggle"
-                onClick={() => setDescOpen(true)}
-              >
-                + Add description
-              </button>
-            )}
-          </div>
-        )}
-        <CharacterDisplay />
-        <WeaponSlots />
-        <TomeSlots />
+      {/* Always visible on desktop; hidden on mobile (preview tab used instead) */}
+      <div className="side-preview desktop-preview">
+        {previewContent}
       </div>
     </div>
   );
