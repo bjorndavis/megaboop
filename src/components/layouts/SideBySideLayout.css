@@ -175,10 +175,14 @@
   }
 
   .side-selectors {
-    /* Give selectors a fixed portion of screen on mobile */
-    height: 55vmax;
-    max-height: 420px;
-    min-height: 280px;
+    /* Tall enough for Loadout tab (two stacked grids) */
+    height: 70vh;
+    min-height: 360px;
+  }
+
+  /* Each grid gets at least 150px of scrollable space */
+  .selector-tab-content .selector-container {
+    min-height: 150px;
   }
 
   .selector-tab {
