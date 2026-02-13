@@ -204,18 +204,24 @@
     display: none;
   }
 
-  /* Tab content scrolls on mobile; not constrained to shared fixed height */
+  /* Tab content scrolls on mobile */
   .selector-tab-content {
     flex: none;
     overflow-y: auto;
     overflow-x: hidden;
+    min-height: 80vh;
     max-height: 82vh;
   }
 
-  /* Each section (weapons or tomes) takes ~half the screen */
+  /* Loadout tab: two sections each ~half the screen */
   .selector-tab-content .selector-container {
     flex: none;
     min-height: 46vh;
+  }
+
+  /* Characters tab: single section fills the full height */
+  .selector-tab-content .selector-container:only-child {
+    min-height: 78vh;
   }
 
   /* Grid expands to natural height; outer tab content scrolls */
@@ -229,6 +235,7 @@
   /* Preview tab panel fills the scroll area */
   .preview-tab-panel {
     overflow-y: auto;
+    min-height: 78vh;
     max-height: 82vh;
   }
 
