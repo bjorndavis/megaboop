@@ -174,16 +174,31 @@
     gap: 8px;
   }
 
+  /* Selector column grows naturally — no fixed height */
   .side-selectors {
-    /* Tall enough for Loadout tab (two stacked grids).
-       Header is ~50px on mobile, browser chrome ~90px, leaving ~80vh usable. */
-    height: 75vh;
-    min-height: 400px;
+    height: auto;
   }
 
-  /* Each grid gets at least 180px of scrollable space */
+  /* Tab content scrolls on mobile; not constrained to shared fixed height */
+  .selector-tab-content {
+    flex: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 82vh;
+  }
+
+  /* Each section (weapons or tomes) takes ~half the screen */
   .selector-tab-content .selector-container {
-    min-height: 180px;
+    flex: none;
+    min-height: 46vh;
+  }
+
+  /* Grid expands to natural height; outer tab content scrolls */
+  .selector-tab-content .selector-grid {
+    flex: none;
+    min-height: 0;
+    max-height: none;
+    overflow-y: visible;
   }
 
   .selector-tab {
