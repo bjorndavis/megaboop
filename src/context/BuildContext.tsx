@@ -14,6 +14,7 @@ interface BuildContextType {
   setBuildName: (name: string) => void;
   setBuildDescription: (description: string) => void;
   clearError: () => void;
+  loadBuild: (build: Build) => void;
 }
 
 const BuildContext = createContext<BuildContextType | undefined>(undefined);

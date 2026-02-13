@@ -1,0 +1,265 @@
+/* ── Shared list styles ─────────────────────────────────────────── */
+
+.saved-builds-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.saved-builds-save-btn {
+  padding: 0.5rem 1rem;
+  background: #4ade80;
+  color: #1a1a2e;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background 0.15s;
+  width: 100%;
+}
+
+.saved-builds-save-btn:hover:not(:disabled) {
+  background: #22c55e;
+}
+
+.saved-builds-save-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.saved-builds-empty {
+  color: #888;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 0.75rem 0;
+}
+
+.saved-build-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+}
+
+.saved-build-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.saved-build-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #e2e8f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.saved-build-meta {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 1px;
+}
+
+.saved-build-load-btn {
+  padding: 0.25rem 0.6rem;
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.saved-build-load-btn:hover {
+  background: #4f46e5;
+}
+
+.saved-build-delete-btn {
+  padding: 0.25rem 0.5rem;
+  background: transparent;
+  color: #f87171;
+  border: 1px solid #f87171;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.saved-build-delete-btn:hover {
+  background: #f87171;
+  color: #1a1a2e;
+}
+
+/* ── Option A: Modal ─────────────────────────────────────────────── */
+
+.saved-modal-trigger {
+  padding: 0.5rem 1rem;
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 0.75rem;
+  transition: background 0.15s;
+}
+
+.saved-modal-trigger:hover {
+  background: #4f46e5;
+}
+
+.saved-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.saved-modal {
+  background: #1e2235;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 1.25rem;
+  width: min(90vw, 440px);
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.saved-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.saved-modal-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #e2e8f0;
+}
+
+.saved-modal-close {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.1rem 0.4rem;
+}
+
+.saved-modal-close:hover {
+  color: #e2e8f0;
+}
+
+.saved-modal-body {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ── Option B: Sidebar panel ─────────────────────────────────────── */
+
+.saved-sidebar-panel {
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 0.75rem;
+}
+
+.saved-sidebar-panel h4 {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Option C: Collapsible drawer ────────────────────────────────── */
+
+.saved-drawer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 1rem;
+}
+
+.saved-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.saved-drawer-header:hover {
+  color: #e2e8f0;
+}
+
+.saved-drawer-chevron {
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+.saved-drawer-chevron.open {
+  transform: rotate(180deg);
+}
+
+.saved-drawer-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+}
+
+/* ── Floating UI toggle pill ─────────────────────────────────────── */
+
+.ui-option-pill {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  background: #1e2235;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  overflow: hidden;
+  z-index: 200;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.ui-option-pill button {
+  padding: 0.35rem 0.85rem;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.ui-option-pill button.active {
+  background: #6366f1;
+  color: #fff;
+}
+
+.ui-option-pill button:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.07);
+  color: #e2e8f0;
+}

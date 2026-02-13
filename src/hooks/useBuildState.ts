@@ -134,6 +134,17 @@ export function useBuildState() {
     setError(null);
   }, []);
 
+  const loadBuild = useCallback((buildToLoad: Build) => {
+    setBuild({
+      character: buildToLoad.character,
+      weapons: buildToLoad.weapons,
+      tomes: buildToLoad.tomes,
+      name: buildToLoad.name,
+      description: buildToLoad.description
+    });
+    setError(null);
+  }, []);
+
   return {
     build,
     error,
@@ -145,6 +156,7 @@ export function useBuildState() {
     resetBuild,
     setBuildName,
     setBuildDescription,
-    clearError
+    clearError,
+    loadBuild
   };
 }
