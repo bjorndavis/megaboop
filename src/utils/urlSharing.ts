@@ -1,9 +1,5 @@
 import { Build } from '../types/game.types';
 
-// Max description length encoded into the URL. Long descriptions break iMessage
-// link previews — the remainder spills out as raw text in the message body.
-const MAX_URL_DESCRIPTION_LENGTH = 80;
-
 function encodeParam(key: string, value: string): string {
   return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
 }
@@ -31,11 +27,7 @@ export function encodeBuildToUrl(build: Build): string {
   }
 
   if (build.description && build.description.trim()) {
-    const desc = build.description.trim();
-    const truncated = desc.length > MAX_URL_DESCRIPTION_LENGTH
-      ? desc.slice(0, MAX_URL_DESCRIPTION_LENGTH) + '…'
-      : desc;
-    parts.push(encodeParam('d', truncated));
+    parts.push(encodeParam('d', build.description.trim()));
   }
 
   return parts.join('&');

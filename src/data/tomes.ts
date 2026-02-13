@@ -6,34 +6,88 @@ export const tomes: Tome[] = [
     id: 'agility',
     name: 'Agility',
     type: 'tome',
-    effect: 'Increases movement speed',
+    effect: '+15% Movement Speed',
     description: 'Move faster across the battlefield',
     imageUrl: '/images/tomes/agility.png',
     unlockCondition: 'Available from start'
   },
   {
+    id: 'armor',
+    name: 'Armor',
+    type: 'tome',
+    effect: '+12% Armor',
+    description: 'Reduce incoming damage',
+    imageUrl: '/images/tomes/armor.png',
+    unlockCondition: 'Kill 5,000 enemies as Sir Oofie'
+  },
+  {
+    id: 'attraction',
+    name: 'Attraction',
+    type: 'tome',
+    effect: '+75% Pickup Range',
+    description: 'Magnetize pickups and experience gems',
+    imageUrl: '/images/tomes/attraction.png',
+    unlockCondition: 'Use the Shrine of Succ 8 times'
+  },
+  {
+    id: 'bloody',
+    name: 'Bloody',
+    type: 'tome',
+    effect: '+10% Lifesteal',
+    description: 'Heal by dealing damage',
+    imageUrl: '/images/tomes/bloody.png',
+    unlockCondition: 'Kill 12,500 enemies'
+  },
+  {
+    id: 'chaos',
+    name: 'Chaos',
+    type: 'tome',
+    effect: 'Random stat boost on upgrade',
+    description: 'Unpredictable power',
+    imageUrl: '/images/tomes/chaos.png',
+    unlockCondition: 'Charge all Charge Shrines on a Tier 3 run across all three stages without leaving the charge zone'
+  },
+  {
     id: 'cooldown',
     name: 'Cooldown',
     type: 'tome',
-    effect: 'Reduces weapon cooldown',
+    effect: '+7.5% Attack Speed',
     description: 'Attack more frequently',
     imageUrl: '/images/tomes/cooldown.png',
     unlockCondition: 'Available from start'
   },
   {
+    id: 'cursed',
+    name: 'Cursed',
+    type: 'tome',
+    effect: '+3.5% Difficulty',
+    description: 'Powerful but dangerous',
+    imageUrl: '/images/tomes/cursed.png',
+    unlockCondition: 'Beat any Stage Boss in under 5 minutes'
+  },
+  {
     id: 'damage',
     name: 'Damage',
     type: 'tome',
-    effect: 'Increases damage dealt',
+    effect: '+0.08x Damage',
     description: 'Hit harder',
     imageUrl: '/images/tomes/damage.png',
     unlockCondition: 'Available from start'
   },
   {
+    id: 'duration',
+    name: 'Duration',
+    type: 'tome',
+    effect: '+15% Duration',
+    description: 'Effects last longer',
+    imageUrl: '/images/tomes/duration.png',
+    unlockCondition: 'Upgrade the Axe to level 10 in a single run'
+  },
+  {
     id: 'evasion',
     name: 'Evasion',
     type: 'tome',
-    effect: 'Chance to dodge attacks',
+    effect: '+10% Evasion',
     description: 'Avoid incoming damage',
     imageUrl: '/images/tomes/evasion.png',
     unlockCondition: 'Available from start'
@@ -42,7 +96,7 @@ export const tomes: Tome[] = [
     id: 'golden',
     name: 'Golden',
     type: 'tome',
-    effect: 'Increases gold gained',
+    effect: '+12% Gold Gain',
     description: 'Earn more currency',
     imageUrl: '/images/tomes/golden.png',
     unlockCondition: 'Available from start'
@@ -51,7 +105,7 @@ export const tomes: Tome[] = [
     id: 'health',
     name: 'Health',
     type: 'tome',
-    effect: 'Increases maximum health',
+    effect: '+25 Max HP',
     description: 'Survive longer',
     imageUrl: '/images/tomes/health.png',
     unlockCondition: 'Available from start'
@@ -60,17 +114,26 @@ export const tomes: Tome[] = [
     id: 'knockback',
     name: 'Knockback',
     type: 'tome',
-    effect: 'Pushes enemies away on hit',
+    effect: '+20% Knockback',
     description: 'Keep enemies at bay',
     imageUrl: '/images/tomes/knockback.png',
     unlockCondition: 'Available from start'
   },
   {
+    id: 'luck',
+    name: 'Luck',
+    type: 'tome',
+    effect: '+7% Luck',
+    description: 'Better rewards from chests and level-ups',
+    imageUrl: '/images/tomes/luck.png',
+    unlockCondition: '0.01% chance to drop when killing an enemy'
+  },
+  {
     id: 'precision',
     name: 'Precision',
     type: 'tome',
-    effect: 'Increases critical hit chance',
-    description: 'Deal critical strikes',
+    effect: '+7% Crit Chance',
+    description: 'Deal critical strikes more often',
     imageUrl: '/images/tomes/precision.png',
     unlockCondition: 'Available from start'
   },
@@ -78,16 +141,25 @@ export const tomes: Tome[] = [
     id: 'projectile-speed',
     name: 'Projectile Speed',
     type: 'tome',
-    effect: 'Increases projectile velocity',
+    effect: '+15% Projectile Speed',
     description: 'Projectiles travel faster',
     imageUrl: '/images/tomes/projectile-speed.png',
     unlockCondition: 'Available from start'
   },
   {
+    id: 'quantity',
+    name: 'Quantity',
+    type: 'tome',
+    effect: '+1 Projectile Count',
+    description: 'Shoot more projectiles',
+    imageUrl: '/images/tomes/quantity.png',
+    unlockCondition: 'Fire 5,000 projectiles'
+  },
+  {
     id: 'regen',
     name: 'Regen',
     type: 'tome',
-    effect: 'Regenerate health over time',
+    effect: '+40 HP Regen per minute',
     description: 'Passive healing',
     imageUrl: '/images/tomes/regen.png',
     unlockCondition: 'Available from start'
@@ -96,7 +168,7 @@ export const tomes: Tome[] = [
     id: 'shield',
     name: 'Shield',
     type: 'tome',
-    effect: 'Gain temporary shield',
+    effect: '+25 Shield',
     description: 'Extra protection layer',
     imageUrl: '/images/tomes/shield.png',
     unlockCondition: 'Available from start'
@@ -105,8 +177,8 @@ export const tomes: Tome[] = [
     id: 'silver',
     name: 'Silver',
     type: 'tome',
-    effect: 'Increases experience gained',
-    description: 'Level up faster',
+    effect: '+12% Silver Gain',
+    description: 'Earn more permanent currency',
     imageUrl: '/images/tomes/silver.png',
     unlockCondition: 'Available from start'
   },
@@ -114,102 +186,28 @@ export const tomes: Tome[] = [
     id: 'size',
     name: 'Size',
     type: 'tome',
-    effect: 'Increases projectile and AoE size',
-    description: 'Bigger attacks',
+    effect: '+10% Size',
+    description: 'Bigger projectiles and AoE',
     imageUrl: '/images/tomes/size.png',
     unlockCondition: 'Available from start'
-  },
-
-  // Unlockable Tomes (10)
-  {
-    id: 'armor',
-    name: 'Armor',
-    type: 'tome',
-    effect: 'Reduces damage taken',
-    description: 'Increase defense',
-    imageUrl: '/images/tomes/armor.png',
-    unlockCondition: 'Beat wave 5'
-  },
-  {
-    id: 'attraction',
-    name: 'Attraction',
-    type: 'tome',
-    effect: 'Pulls items and enemies closer',
-    description: 'Magnetize pickups',
-    imageUrl: '/images/tomes/attraction.png',
-    unlockCondition: 'Beat wave 8'
-  },
-  {
-    id: 'bloody',
-    name: 'Bloody',
-    type: 'tome',
-    effect: 'Lifesteal on hit',
-    description: 'Heal by dealing damage',
-    imageUrl: '/images/tomes/bloody.png',
-    unlockCondition: 'Beat wave 10'
-  },
-  {
-    id: 'chaos',
-    name: 'Chaos',
-    type: 'tome',
-    effect: 'Random stat increases',
-    description: 'Unpredictable power',
-    imageUrl: '/images/tomes/chaos.png',
-    unlockCondition: 'Beat wave 15'
-  },
-  {
-    id: 'cursed',
-    name: 'Cursed',
-    type: 'tome',
-    effect: 'High risk, high reward',
-    description: 'Powerful but dangerous',
-    imageUrl: '/images/tomes/cursed.png',
-    unlockCondition: 'Beat wave 18'
-  },
-  {
-    id: 'duration',
-    name: 'Duration',
-    type: 'tome',
-    effect: 'Extends effect duration',
-    description: 'Effects last longer',
-    imageUrl: '/images/tomes/duration.png',
-    unlockCondition: 'Beat wave 12'
-  },
-  {
-    id: 'luck',
-    name: 'Luck',
-    type: 'tome',
-    effect: 'Increases all random chances',
-    description: 'Better RNG',
-    imageUrl: '/images/tomes/luck.png',
-    unlockCondition: 'Beat wave 20'
-  },
-  {
-    id: 'quantity',
-    name: 'Quantity',
-    type: 'tome',
-    effect: 'Increases projectile count',
-    description: 'Shoot more projectiles',
-    imageUrl: '/images/tomes/quantity.png',
-    unlockCondition: 'Beat wave 7'
   },
   {
     id: 'thorns',
     name: 'Thorns',
     type: 'tome',
-    effect: 'Reflects damage back',
-    description: 'Hurt attackers',
+    effect: '+15 Thorns Damage',
+    description: 'Hurt enemies that attack you',
     imageUrl: '/images/tomes/thorns.png',
-    unlockCondition: 'Beat wave 14'
+    unlockCondition: 'Block 250 attacks with the Aegis'
   },
   {
     id: 'xp',
     name: 'XP',
     type: 'tome',
-    effect: 'Bonus experience gain',
-    description: 'Level up even faster',
+    effect: '+7% XP Gain',
+    description: 'Level up faster',
     imageUrl: '/images/tomes/xp.png',
-    unlockCondition: 'Beat wave 6'
+    unlockCondition: 'Break 20 pots in a single run'
   }
 ];
 
