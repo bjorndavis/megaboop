@@ -19,6 +19,18 @@
   height: 140px;
 }
 
+@media (max-width: 768px) {
+  .item-card.small {
+    width: 70px;
+    height: 70px;
+  }
+
+  .item-card.large {
+    width: 80px;
+    height: 80px;
+  }
+}
+
 .item-card:hover:not(.disabled) {
   transform: scale(1.05);
   border-color: #666;

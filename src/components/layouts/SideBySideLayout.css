@@ -175,14 +175,15 @@
   }
 
   .side-selectors {
-    /* Tall enough for Loadout tab (two stacked grids) */
-    height: 70vh;
-    min-height: 360px;
+    /* Tall enough for Loadout tab (two stacked grids).
+       Header is ~50px on mobile, browser chrome ~90px, leaving ~80vh usable. */
+    height: 75vh;
+    min-height: 400px;
   }
 
-  /* Each grid gets at least 150px of scrollable space */
+  /* Each grid gets at least 180px of scrollable space */
   .selector-tab-content .selector-container {
-    min-height: 150px;
+    min-height: 180px;
   }
 
   .selector-tab {
