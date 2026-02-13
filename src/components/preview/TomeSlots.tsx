@@ -13,7 +13,7 @@ export function TomeSlots() {
           <div key={tome.id} className="item-detail-row">
             <div
               className="item-detail-icon"
-              style={{ backgroundImage: `url(${tome.imageUrl})` }}
+              style={{ backgroundImage: `url(${import.meta.env.BASE_URL + tome.imageUrl.replace(/^\//, '')})` }}
             />
             <div className="item-detail-info">
               <div className="item-detail-name">{tome.name}</div>

@@ -15,6 +15,7 @@ export function CharacterDisplay() {
 
   const startingWeapon = getWeaponById(build.character.startingWeaponId);
   const isPlaceholder = build.character.imageUrl.startsWith('#');
+  const imgSrc = import.meta.env.BASE_URL + build.character.imageUrl.replace(/^\//, '');
 
   return (
     <div className="character-display">
@@ -22,7 +23,7 @@ export function CharacterDisplay() {
         className="character-image"
         style={{
           backgroundColor: isPlaceholder ? build.character.imageUrl : '#1a1a1a',
-          backgroundImage: isPlaceholder ? undefined : `url(${build.character.imageUrl})`,
+          backgroundImage: isPlaceholder ? undefined : `url(${imgSrc})`,
           backgroundSize: 'contain',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'

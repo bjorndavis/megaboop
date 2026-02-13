@@ -10,6 +10,7 @@ interface ItemSlotProps {
 
 export function ItemSlot({ item, index, isLocked, onRemove }: ItemSlotProps) {
   const isPlaceholder = item?.imageUrl.startsWith('#');
+  const imgSrc = item && !isPlaceholder ? import.meta.env.BASE_URL + item.imageUrl.replace(/^\//, '') : undefined;
 
   return (
     <div className="item-slot-container">
@@ -17,7 +18,7 @@ export function ItemSlot({ item, index, isLocked, onRemove }: ItemSlotProps) {
         className={`item-slot ${item ? 'filled' : 'empty'} ${isLocked ? 'locked' : ''}`}
         style={item ? {
           backgroundColor: isPlaceholder ? item.imageUrl : '#1a1a1a',
-          backgroundImage: isPlaceholder ? undefined : `url(${item.imageUrl})`,
+          backgroundImage: isPlaceholder ? undefined : `url(${imgSrc})`,
           backgroundSize: 'contain',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'

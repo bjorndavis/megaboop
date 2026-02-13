@@ -12,6 +12,7 @@ interface ItemCardProps {
 
 export function ItemCard({ item, onClick, isSelected, isDisabled, size = 'small', synergyCount }: ItemCardProps) {
   const isPlaceholder = item.imageUrl.startsWith('#');
+  const imgSrc = import.meta.env.BASE_URL + item.imageUrl.replace(/^\//, '');
 
   return (
     <div
@@ -21,7 +22,7 @@ export function ItemCard({ item, onClick, isSelected, isDisabled, size = 'small'
       title={item.description}
       style={{
         backgroundColor: isPlaceholder ? item.imageUrl : '#1a1a1a',
-        backgroundImage: isPlaceholder ? undefined : `url(${item.imageUrl})`,
+        backgroundImage: isPlaceholder ? undefined : `url(${imgSrc})`,
         backgroundSize: 'contain',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

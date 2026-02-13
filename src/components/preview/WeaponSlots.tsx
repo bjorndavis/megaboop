@@ -35,7 +35,7 @@ export function WeaponSlots() {
               <div className="item-detail-row">
                 <div
                   className="item-detail-icon"
-                  style={{ backgroundImage: `url(${weapon.imageUrl})` }}
+                  style={{ backgroundImage: `url(${import.meta.env.BASE_URL + weapon.imageUrl.replace(/^\//, '')})` }}
                 />
                 <div className="item-detail-info">
                   <div className="item-detail-name">{weapon.name}</div>
