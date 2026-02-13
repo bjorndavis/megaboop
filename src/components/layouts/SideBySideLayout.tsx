@@ -58,7 +58,7 @@ export function SideBySideLayout() {
                 placeholder="Describe your build strategy..."
                 value={build.description || ''}
                 onChange={(e) => setBuildDescription(e.target.value)}
-                maxLength={500}
+                maxLength={300}
                 rows={2}
                 autoFocus
               />
