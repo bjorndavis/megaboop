@@ -139,3 +139,4 @@ Modern browsers with ES2020+ support:
 ## License
 
 This is a fan-made tool for the Mega Bonk game. All game content and trademarks belong to their respective owners.
+Data was sourced from the Megabonk wiki, `https://megabonk.wiki/wiki/`, whose content is licensed under Creative Commons Attribution-ShareAlike `https://creativecommons.org/licenses/by-sa/4.0/`
