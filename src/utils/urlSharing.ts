@@ -1,37 +1,44 @@
 import { Build } from '../types/game.types';
 
+// Max description length encoded into the URL. Long descriptions break iMessage
+// link previews — the remainder spills out as raw text in the message body.
+const MAX_URL_DESCRIPTION_LENGTH = 80;
+
+function encodeParam(key: string, value: string): string {
+  return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+}
+
 export function encodeBuildToUrl(build: Build): string {
   if (!build.character) {
     return '';
   }
 
-  const params = new URLSearchParams();
+  const parts: string[] = [];
 
-  // Add character
-  params.set('c', build.character.id);
+  parts.push(encodeParam('c', build.character.id));
 
-  // Add build name
   if (build.name && build.name.trim()) {
-    params.set('n', build.name.trim());
+    parts.push(encodeParam('n', build.name.trim()));
   }
 
-  // Add weapons (excluding the starting weapon since it's automatic)
   const additionalWeapons = build.weapons.slice(1).map(w => w.id);
   if (additionalWeapons.length > 0) {
-    params.set('w', additionalWeapons.join(','));
+    parts.push(encodeParam('w', additionalWeapons.join(',')));
   }
 
-  // Add tomes
   if (build.tomes.length > 0) {
-    params.set('t', build.tomes.map(t => t.id).join(','));
+    parts.push(encodeParam('t', build.tomes.map(t => t.id).join(',')));
   }
 
-  // Add description
   if (build.description && build.description.trim()) {
-    params.set('d', build.description.trim());
+    const desc = build.description.trim();
+    const truncated = desc.length > MAX_URL_DESCRIPTION_LENGTH
+      ? desc.slice(0, MAX_URL_DESCRIPTION_LENGTH) + '…'
+      : desc;
+    parts.push(encodeParam('d', truncated));
   }
 
-  return params.toString();
+  return parts.join('&');
 }
 
 export function getShareableUrl(build: Build): string {
