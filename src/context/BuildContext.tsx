@@ -1,6 +1,6 @@
 import { createContext, useContext, ReactNode } from 'react';
 import { useBuildState } from '../hooks/useBuildState';
-import { Build, Character, Weapon, Tome } from '../types/game.types';
+import { Build, Character, Weapon, Tome, Item } from '../types/game.types';
 
 interface BuildContextType {
   build: Build;
@@ -10,6 +10,8 @@ interface BuildContextType {
   removeWeapon: (index: number) => void;
   addTome: (tome: Tome) => void;
   removeTome: (index: number) => void;
+  addItem: (item: Item) => void;
+  removeItem: (index: number) => void;
   resetBuild: () => void;
   setBuildName: (name: string) => void;
   setBuildDescription: (description: string) => void;

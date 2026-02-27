@@ -2,6 +2,7 @@ import { Build } from '../types/game.types';
 import { characters } from '../data/characters';
 import { weapons } from '../data/weapons';
 import { tomes } from '../data/tomes';
+import { items } from '../data/items';
 import {
   compressToEncodedURIComponent,
   decompressFromEncodedURIComponent,
@@ -47,6 +48,20 @@ export function encodeBuildToUrl(build: Build): string {
     parts.push(`t=${tMask.toString(36)}`);
   }
 
+  // Items: split into three 30-bit bitmasks (ia=0-29, ib=30-59, ic=60+)
+  if (build.items && build.items.length > 0) {
+    let iaMask = 0, ibMask = 0, icMask = 0;
+    for (const item of build.items) {
+      const idx = items.findIndex(x => x.id === item.id);
+      if (idx >= 0 && idx < 30) iaMask |= (1 << idx);
+      else if (idx >= 30 && idx < 60) ibMask |= (1 << (idx - 30));
+      else if (idx >= 60) icMask |= (1 << (idx - 60));
+    }
+    if (iaMask) parts.push(`ia=${iaMask.toString(36)}`);
+    if (ibMask) parts.push(`ib=${ibMask.toString(36)}`);
+    if (icMask) parts.push(`ic=${icMask.toString(36)}`);
+  }
+
   // Description: lz-string compressed
   if (build.description && build.description.trim()) {
     const compressed = compressToEncodedURIComponent(build.description.trim());
@@ -70,6 +85,7 @@ export interface BuildFromUrl {
   characterId: string;
   weaponIds: string[];
   tomeIds: string[];
+  itemIds: string[];
   name?: string;
   description?: string;
 }
@@ -113,6 +129,30 @@ export function decodeBuildFromUrl(): BuildFromUrl | null {
       }
     }
 
+    // Decode items bitmasks
+    const itemIds: string[] = [];
+    const iaParam = params.get('ia');
+    if (iaParam) {
+      const iaMask = parseInt(iaParam, 36);
+      for (let i = 0; i < 30 && i < items.length; i++) {
+        if (iaMask & (1 << i)) itemIds.push(items[i].id);
+      }
+    }
+    const ibParam = params.get('ib');
+    if (ibParam) {
+      const ibMask = parseInt(ibParam, 36);
+      for (let i = 0; i < 30 && (i + 30) < items.length; i++) {
+        if (ibMask & (1 << i)) itemIds.push(items[i + 30].id);
+      }
+    }
+    const icParam = params.get('ic');
+    if (icParam) {
+      const icMask = parseInt(icParam, 36);
+      for (let i = 0; (i + 60) < items.length; i++) {
+        if (icMask & (1 << i)) itemIds.push(items[i + 60].id);
+      }
+    }
+
     const name = params.get('n') || undefined;
 
     // Decode lz-string compressed description
@@ -127,6 +167,7 @@ export function decodeBuildFromUrl(): BuildFromUrl | null {
       characterId: character.id,
       weaponIds,
       tomeIds,
+      itemIds,
       name,
       description,
     };
@@ -146,6 +187,7 @@ export function decodeBuildFromUrl(): BuildFromUrl | null {
     characterId: cParam,
     weaponIds,
     tomeIds,
+    itemIds: [],
     name,
     description,
   };

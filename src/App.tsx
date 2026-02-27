@@ -7,11 +7,12 @@ import { getShareableUrl, copyToClipboard, decodeBuildFromUrl } from './utils/ur
 import { characters } from './data/characters';
 import { weapons } from './data/weapons';
 import { tomes } from './data/tomes';
+import { items } from './data/items';
 import './App.css';
 import './components/saved/SavedBuilds.css';
 
 function AppContent() {
-  const { build, error, clearError, resetBuild, selectCharacter, addWeapon, addTome, setBuildName, setBuildDescription, loadBuild } = useBuild();
+  const { build, error, clearError, resetBuild, selectCharacter, addWeapon, addTome, addItem, setBuildName, setBuildDescription, loadBuild } = useBuild();
   const { savedBuilds, saveCurrentBuild, deleteSavedBuild } = useSavedBuilds();
   const [showCopied, setShowCopied] = useState(false);
   const [savesOpen, setSavesOpen] = useState(false);
@@ -31,6 +32,10 @@ function AppContent() {
         urlBuild.tomeIds.forEach(tomeId => {
           const tome = tomes.find(t => t.id === tomeId);
           if (tome) addTome(tome);
+        });
+        urlBuild.itemIds.forEach(itemId => {
+          const item = items.find(i => i.id === itemId);
+          if (item) addItem(item);
         });
         if (urlBuild.description) setBuildDescription(urlBuild.description);
       }

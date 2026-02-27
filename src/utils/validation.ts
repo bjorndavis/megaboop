@@ -1,4 +1,4 @@
-import { Build, Weapon, Tome, Character } from '../types/game.types';
+import { Build, Weapon, Tome, Item, Character } from '../types/game.types';
 import { getWeaponById } from '../data/weapons';
 
 export const MAX_WEAPONS = 4;
@@ -65,6 +65,23 @@ export function validateRemoveTome(build: Build, index: number): ValidationResul
   // Check if index is valid
   if (index < 0 || index >= build.tomes.length) {
     return { valid: false, error: 'Invalid tome index' };
+  }
+
+  return { valid: true };
+}
+
+export function validateAddItem(build: Build, _item: Item): ValidationResult {
+  // Must have character selected
+  if (!build.character) {
+    return { valid: false, error: 'Please select a character first' };
+  }
+
+  return { valid: true };
+}
+
+export function validateRemoveItem(build: Build, index: number): ValidationResult {
+  if (index < 0 || index >= build.items.length) {
+    return { valid: false, error: 'Invalid item index' };
   }
 
   return { valid: true };

@@ -17,6 +17,15 @@ export interface Tome extends GameItem {
   unlockCondition?: string;
 }
 
+export type ItemTier = 'common' | 'uncommon' | 'rare' | 'legendary';
+
+export interface Item extends GameItem {
+  type: 'item';
+  effect: string;
+  tier: ItemTier;
+  unlockCondition?: string;
+}
+
 export interface Character extends GameItem {
   type: 'character';
   startingWeaponId: string;
@@ -28,6 +37,7 @@ export interface Build {
   character: Character | null;
   weapons: Weapon[];
   tomes: Tome[];
+  items: Item[];
   name?: string;
   description?: string;
 }

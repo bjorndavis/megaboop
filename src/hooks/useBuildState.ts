@@ -1,11 +1,13 @@
 import { useState, useCallback } from 'react';
-import { Build, Character, Weapon, Tome } from '../types/game.types';
+import { Build, Character, Weapon, Tome, Item } from '../types/game.types';
 import { getWeaponById } from '../data/weapons';
 import {
   validateAddWeapon,
   validateRemoveWeapon,
   validateAddTome,
   validateRemoveTome,
+  validateAddItem,
+  validateRemoveItem,
   validateCharacterSelection
 } from '../utils/validation';
 
@@ -14,6 +16,7 @@ export function useBuildState() {
     character: null,
     weapons: [],
     tomes: [],
+    items: [],
     name: ''
   });
   const [error, setError] = useState<string | null>(null);
@@ -37,7 +40,8 @@ export function useBuildState() {
     setBuild({
       character,
       weapons: [startingWeapon],
-      tomes: []
+      tomes: [],
+      items: []
     });
     setError(null);
   }, []);
@@ -90,6 +94,38 @@ export function useBuildState() {
     });
   }, []);
 
+  const addItem = useCallback((item: Item) => {
+    setBuild(currentBuild => {
+      const validation = validateAddItem(currentBuild, item);
+      if (!validation.valid) {
+        setError(validation.error || 'Cannot add item');
+        return currentBuild;
+      }
+
+      setError(null);
+      return {
+        ...currentBuild,
+        items: [...currentBuild.items, item]
+      };
+    });
+  }, []);
+
+  const removeItem = useCallback((index: number) => {
+    setBuild(currentBuild => {
+      const validation = validateRemoveItem(currentBuild, index);
+      if (!validation.valid) {
+        setError(validation.error || 'Cannot remove item');
+        return currentBuild;
+      }
+
+      setError(null);
+      return {
+        ...currentBuild,
+        items: currentBuild.items.filter((_, i) => i !== index)
+      };
+    });
+  }, []);
+
   const removeTome = useCallback((index: number) => {
     setBuild(currentBuild => {
       const validation = validateRemoveTome(currentBuild, index);
@@ -111,6 +147,7 @@ export function useBuildState() {
       character: null,
       weapons: [],
       tomes: [],
+      items: [],
       name: ''
     });
     setError(null);
@@ -139,6 +176,7 @@ export function useBuildState() {
       character: buildToLoad.character,
       weapons: buildToLoad.weapons,
       tomes: buildToLoad.tomes,
+      items: buildToLoad.items ?? [],
       name: buildToLoad.name,
       description: buildToLoad.description
     });
@@ -153,6 +191,8 @@ export function useBuildState() {
     removeWeapon,
     addTome,
     removeTome,
+    addItem,
+    removeItem,
     resetBuild,
     setBuildName,
     setBuildDescription,

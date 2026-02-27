@@ -2,15 +2,17 @@ import { useState, useEffect } from 'react';
 import { CharacterSelector } from '../selectors/CharacterSelector';
 import { WeaponSelector } from '../selectors/WeaponSelector';
 import { TomeSelector } from '../selectors/TomeSelector';
+import { ItemSelector } from '../selectors/ItemSelector';
 import { CharacterDisplay } from '../preview/CharacterDisplay';
 import { WeaponSlots } from '../preview/WeaponSlots';
 import { TomeSlots } from '../preview/TomeSlots';
+import { ItemSlots } from '../preview/ItemSlots';
 import { useBuild } from '../../context/BuildContext';
 import { MAX_WEAPONS, MAX_TOMES } from '../../utils/validation';
 import { decodeBuildFromUrl } from '../../utils/urlSharing';
 import './SideBySideLayout.css';
 
-type Tab = 'characters' | 'loadout' | 'preview';
+type Tab = 'characters' | 'loadout' | 'items' | 'preview';
 
 export function SideBySideLayout() {
   const { build, setBuildName, setBuildDescription } = useBuild();
@@ -35,6 +37,7 @@ export function SideBySideLayout() {
   const tabs: { id: Tab; label: string; mobileOnly?: boolean }[] = [
     { id: 'characters', label: build.character ? `✓ ${build.character.name}` : 'Characters' },
     { id: 'loadout', label: `Weapons (${build.weapons.length}/${MAX_WEAPONS}) · Tomes (${build.tomes.length}/${MAX_TOMES})` },
+    { id: 'items', label: build.items.length > 0 ? `Items (${build.items.length})` : 'Items' },
     { id: 'preview', label: 'Preview', mobileOnly: true },
   ];
 
@@ -79,6 +82,7 @@ export function SideBySideLayout() {
       <CharacterDisplay />
       <WeaponSlots />
       <TomeSlots />
+      <ItemSlots />
     </>
   );
 
@@ -104,6 +108,7 @@ export function SideBySideLayout() {
               <TomeSelector />
             </>
           )}
+          {activeTab === 'items' && <ItemSelector />}
           {activeTab === 'preview' && (
             <div className="preview-tab-panel">
               {previewContent}
