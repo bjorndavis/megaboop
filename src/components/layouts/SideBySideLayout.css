@@ -66,13 +66,14 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .selector-tab-content .selector-grid {
   flex: 1;
   min-height: 0;
   max-height: none; /* override fixed max-height when inside tabs */
-  overflow-y: auto;
+  overflow-y: visible;
 }
 
 /* ── Right column: preview ───────────────────────────────────────── */
